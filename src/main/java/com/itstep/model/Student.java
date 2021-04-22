@@ -1,6 +1,7 @@
 package com.itstep.model;
 
 public class Student {
+    Long id;
     String name;
     String phone;
 
@@ -10,6 +11,20 @@ public class Student {
     public Student(String name, String phone) {
         this.name = name;
         this.phone = phone;
+    }
+
+    public Student(Long id, String name, String phone) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

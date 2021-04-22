@@ -17,8 +17,8 @@
 <h2>${first}</h2>
 <h2>${second}</h2>
 
-Student
-<h3>Name = ${student.name}</h3>
-<h3>Phone = ${student.phone}</h3>
+<a href="/student">Student</a>
+
+
 </body>
 </html>
