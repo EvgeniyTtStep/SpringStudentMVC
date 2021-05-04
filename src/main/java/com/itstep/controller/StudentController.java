@@ -1,6 +1,7 @@
 package com.itstep.controller;
 
 import com.itstep.model.Student;
+import com.itstep.model.Teacher;
 import com.itstep.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
@@ -32,9 +33,12 @@ public class StudentController {
     public String showStudent(@PathVariable(name = "id", required = false)@Nullable Long id,
                                           Model model, Map<String, Object> studentMap) {
         Student student = new Student("Ivan", "1234");
+        Student student1 = studentService.getById(id);
         model.addAttribute("student", student);
         studentMap.put("studentMap", student);
-        studentMap.put("studentById",studentService.getById(id));
+        studentMap.put("studentById",student1);
+        model.addAttribute("studentByPhone", studentService.byPhone("0999050841"));
+        System.out.println(student1);
         //studentMap.put("students", students);
         return "student";
     }

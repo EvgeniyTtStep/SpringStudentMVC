@@ -1,9 +1,34 @@
 package com.itstep.model;
 
+
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+@Table(name = "student")
 public class Student {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_student")
     Long id;
     String name;
     String phone;
+
+
+    @ManyToMany(mappedBy = "students")
+    Set<Teacher>teachers;
+
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
+    Set<Work>works;
+
+    public Set<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(Set<Teacher> teachers) {
+        this.teachers = teachers;
+    }
 
     public Student() {
     }
@@ -46,8 +71,10 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
+                ", teachers=" + teachers +
                 '}';
     }
 }

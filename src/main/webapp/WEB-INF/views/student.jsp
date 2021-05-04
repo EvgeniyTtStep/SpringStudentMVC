@@ -24,6 +24,19 @@ DB student
 <c:if test="${studentById != null}">
     <h3>Name = ${studentById.name}</h3>
     <h3>Phone = ${studentById.phone}</h3>
+    <h3>
+        <c:forEach var="teacher" items="${studentById.teachers}">
+            Teacher =
+            <tr>
+                <td>Name = <c:out value="${teacher.name}"/></td>
+            </tr>
+            <tr>
+                <td>Phone = <c:out value="${teacher.email}"/></td>
+            </tr>
+            <br>
+        </c:forEach>
+    </h3>
+    <h3>BY PHONE = ${studentByPhone.name}</h3>
 </c:if>
 <c:if test="${studentById == null}">
     <div>Null</div>
