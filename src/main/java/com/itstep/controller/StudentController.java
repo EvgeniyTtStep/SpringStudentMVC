@@ -37,7 +37,7 @@ public class StudentController {
         model.addAttribute("student", student);
         studentMap.put("studentMap", student);
         studentMap.put("studentById",student1);
-        model.addAttribute("studentByPhone", studentService.byPhone("0999050841"));
+        model.addAttribute("studentByPhone", studentService.byPhone("2423"));
         System.out.println(student1);
         //studentMap.put("students", students);
         return "student";
