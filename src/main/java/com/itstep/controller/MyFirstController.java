@@ -30,5 +30,4 @@ public class MyFirstController {
         return "show";
     }
 
-
 }

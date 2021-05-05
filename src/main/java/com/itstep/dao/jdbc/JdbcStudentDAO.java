@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.UUID;
 
 
-@Component
+
 public class JdbcStudentDAO {
     private static Connection connection;
     private static PreparedStatement preparedStatement;

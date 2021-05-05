@@ -1,7 +1,6 @@
 package com.itstep.controller;
 
 import com.itstep.model.Student;
-import com.itstep.model.Teacher;
 import com.itstep.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
@@ -29,6 +28,14 @@ public class StudentController {
         this.studentService = service;
     }
 
+
+    @GetMapping("/showstudents")
+    public String showStudents(Model model){
+        model.addAttribute("student", studentService.byPhone("1111"));
+        model.addAttribute("students", studentService.showAll());
+        return "showstudents";
+    }
+
     @GetMapping({"", "/id={id}"})
     public String showStudent(@PathVariable(name = "id", required = false)@Nullable Long id,
                                           Model model, Map<String, Object> studentMap) {
@@ -42,6 +49,7 @@ public class StudentController {
         //studentMap.put("students", students);
         return "student";
     }
+
 
     @GetMapping(value = "/new_get")
     public String newStudent() {

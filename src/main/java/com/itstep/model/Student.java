@@ -16,7 +16,7 @@ public class Student {
     String phone;
 
 
-    @ManyToMany(mappedBy = "students")
+    @ManyToMany(mappedBy = "students", fetch = FetchType.EAGER)
     Set<Teacher>teachers;
 
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)

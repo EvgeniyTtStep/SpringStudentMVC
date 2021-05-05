@@ -1,6 +1,5 @@
 package com.itstep.dao.hibernate;
 
-import com.itstep.dao.GenericDAO;
 import com.itstep.dao.StudentDAO;
 import com.itstep.model.Student;
 import org.hibernate.Session;
@@ -8,9 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
+
 public class HibernateStudentDAO implements StudentDAO {
 
     private SessionFactory sessionFactory;

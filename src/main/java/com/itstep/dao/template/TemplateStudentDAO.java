@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class TemplateStudentDAO implements StudentDAO {
 
     private static final String INSERT = "INSERT INTO `student` values (?,?)";

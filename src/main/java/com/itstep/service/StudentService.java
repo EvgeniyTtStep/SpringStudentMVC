@@ -1,22 +1,18 @@
 package com.itstep.service;
 
-import com.itstep.dao.StudentDAO;
 import com.itstep.model.Student;
 import com.itstep.repository.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class StudentService {
 
     private StudentRepo studentRepo;
 
-    private StudentDAO hibernateStudentDAO;
 
-    @Autowired
-    public void setStudentDAO(StudentDAO hibernateStudentDAO) {
-        this.hibernateStudentDAO = hibernateStudentDAO;
-    }
 
     @Autowired
     public void setStudentRepo(StudentRepo studentRepo) {
@@ -63,9 +59,13 @@ public class StudentService {
         if (id == null) {
             return null;
         } else {
-            return hibernateStudentDAO.getById(id);
+            return studentRepo.getStudentById(id);
         }
 
+    }
+
+    public List<Student> showAll(){
+        return studentRepo.findAll();
     }
 
 

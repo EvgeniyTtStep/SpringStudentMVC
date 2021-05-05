@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+</head>
+<body>
+Name student:
+
+<h1 th:text="${student.name}">Test test</h1>
+<br>
+Phone:
+<h1 th:text="${student.phone}">Test test</h1>
+
+
+
+<div th:object="${student}">
+    <div th:text="*{name}"></div>
+    <div th:text="*{phone}"></div>
+</div>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>PHONE</th>
+    </tr>
+    <tr th:each="studen, s : ${students}">
+        <td th:text="${s.count}">Onions</td>
+        <td th:text="${studen.name}">Onions</td>
+        <td th:text="${studen.phone}">2.41</td>
+    </tr>
+</table>
+</body>
+</html>
