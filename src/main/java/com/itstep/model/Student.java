@@ -14,6 +14,7 @@ public class Student {
     Long id;
     String name;
     String phone;
+    String password;
 
 
     @ManyToMany(mappedBy = "students", fetch = FetchType.EAGER)
@@ -42,6 +43,22 @@ public class Student {
         this.id = id;
         this.name = name;
         this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<Work> getWorks() {
+        return works;
+    }
+
+    public void setWorks(Set<Work> works) {
+        this.works = works;
     }
 
     public Long getId() {
