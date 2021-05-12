@@ -17,7 +17,7 @@
 <h2>${first}</h2>
 <h2>${second}</h2>
 
-<a href="/student">Student</a>
+<a href="/student/">Student</a>
 
 
 </body>

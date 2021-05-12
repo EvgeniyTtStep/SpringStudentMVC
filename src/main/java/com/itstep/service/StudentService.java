@@ -3,6 +3,7 @@ package com.itstep.service;
 import com.itstep.model.Student;
 import com.itstep.repository.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +13,12 @@ public class StudentService {
 
     private StudentRepo studentRepo;
 
+    private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Autowired
     public void setStudentRepo(StudentRepo studentRepo) {
@@ -45,6 +51,7 @@ public class StudentService {
 
 
     public Student save(Student student) {
+        student.setPassword(passwordEncoder.encode(student.getPassword()));
         return studentRepo.saveAndFlush(student);
         //jdbcStudentDAO.saveStudent(student);
         //templateStudentDAO.save(student);

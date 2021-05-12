@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 
@@ -21,6 +22,13 @@ import java.util.List;
 public class AuthProviderIml implements AuthenticationProvider {
 
     private StudentRepo studentRepo;
+
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Autowired
     public void setStudentRepo(StudentRepo studentRepo) {
@@ -38,7 +46,9 @@ public class AuthProviderIml implements AuthenticationProvider {
 
         String password = authentication.getCredentials().toString();
 
-        if(!password.equals(student.getPassword())){
+
+        if(!passwordEncoder.matches(password, student.getPassword())){
+            //if(!password.equals(student.getPassword())){
             System.out.println("Password is wrong");
             throw new BadCredentialsException("Пароль не верный");
         }

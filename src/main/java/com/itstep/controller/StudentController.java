@@ -29,14 +29,14 @@ public class StudentController {
     }
 
 
-    @GetMapping("/showstudents")
+    @GetMapping("")
     public String showStudents(Model model){
         model.addAttribute("student", studentService.byPhone("1111"));
         model.addAttribute("students", studentService.showAll());
         return "showstudents";
     }
 
-    @GetMapping({"", "/id={id}"})
+    @GetMapping(value = "/id={id}")
     public String showStudent(@PathVariable(name = "id", required = false)@Nullable Long id,
                                           Model model, Map<String, Object> studentMap) {
         Student student = new Student("Ivan", "1234");
@@ -53,7 +53,7 @@ public class StudentController {
 
     @GetMapping(value = "/new_get")
     public String newStudent() {
-        return "new_student";
+        return "registration";
     }
 
 //    @PostMapping("student/new")
